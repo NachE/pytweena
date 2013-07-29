@@ -13,4 +13,4 @@ Roadmap
 
 Status
 ======
-Timelines support: OK
+Timelines support: In progress
