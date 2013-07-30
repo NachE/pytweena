@@ -15,7 +15,7 @@ Pytweena wrap transparently the twitter REST API v1.1 using the same names.
 - GET statuses/user_timeline  ->  api.user_timeline()
 
 Also you can send the same options documented on twitter api v1.1:
-- api.mentions_timeline({'count' : 10, 'since_id' : 12345, 'trim_user' : true})
+- api.mentions_timeline({'count' : 10, 'since_id' : 12345, 'trim_user' : 'true'})
 
 
 **Roadmap**
