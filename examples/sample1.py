@@ -18,7 +18,7 @@ myapi.auth(consumerkey, consumersecret, accesstoken, accesstokensecret)
 
 ########################################
 print ("\n\n\nGet latest 10 tweets from timeline")
-myapi.home_timeline({'count': 10})
+myapi.statuses_home_timeline({'count': 10})
 for tweet in myapi.jsondata:
 	print tweet['text']
 ########################################
@@ -27,7 +27,7 @@ for tweet in myapi.jsondata:
 
 ########################################
 print ("\n\n\nGet tweet by id")
-myapi.show({'id':8062317551})
+myapi.statuses_show({'id':8062317551})
 print myapi.jsondata['text']
 #######################################
 
@@ -44,5 +44,5 @@ for tweet in myapi.jsondata['statuses']:
 
 ###########################################
 print("\n\n\nSend a tweet")
-myapi.update({'status': 'Hi!, im an app with pytweena lib!'})
+myapi.statuses_update({'status': 'Hi!, im an app with pytweena lib!'})
 ###########################################
