@@ -3,7 +3,7 @@ pytweena
 
 Python library for twitter API. 
 
-Pytweena try to be very transparent: you send query and get json response to manage with your own app. Instead maybe in a future we'll work on a class to be less transparent but more easy.
+Pytweena try to be very transparent: send query, get json. API v1.1. 
 
 
 **Documentation**
