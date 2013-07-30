@@ -32,7 +32,7 @@ Also you can send the same options documented on twitter api v1.1:
 - Tweets support: OK except media upload
 - Search support: OK
 - Streaming support: TODO
-- Direct Messages support: TODO
+- Direct Messages support: OK
 - Friends & Followers support: TODO
 - Users support: TODO
 - Suggested Users support: TODO

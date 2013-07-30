@@ -99,7 +99,32 @@ class PytweenaAPI():
 		return self.req_GET('search/tweets', parameters)
 
 
+	# Streaming
+	# =========
+	# :O TODO
 
+
+	# Direct Messages
+	# ===============
+
+	def direct_messages(self, parameters = {}):
+		return self.req_GET('direct_messages', parameters)
+
+	def direct_messages_sent(self, parameters = {}):
+		return self.req_GET('direct_messages/sent', parameters)
+
+	def direct_messages_show(self, parameters = {}):
+		return self.req_GET('direct_messages/show', parameters)
+
+	def direct_messages_destroy(self, parameters = {}):
+		return self.req_POST('direct_messages/sent', parameters)
+
+	def direct_messages_new(self, parameters = {}):
+		return self.req_POST('direct_messages/new', parameters)
+
+
+	# Friends & Followers
+	# ===================
 
 
 
