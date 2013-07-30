@@ -38,8 +38,6 @@ class PytweenaAPI():
 			method=http_method,
 			body = post_data 
 		)
-		print parameters;
-		print post_data;
 
 		self.jsondata = json.loads(self.data)
 		return [self.response, self.data]
@@ -88,6 +86,14 @@ class PytweenaAPI():
 
 	def retweeters_ids(self, parameters = {}):
 		return self.req_GET('statuses/retweeters/ids', parameters)
+
+
+	# Search
+	# ======
+
+	def search_tweets(self, parameters = {}):
+		return self.req_GET('search/tweets', parameters)
+
 
 
 
