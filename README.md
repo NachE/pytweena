@@ -6,9 +6,7 @@ Python library for twitter API.
 Pytweena try to be very transparent: you send query and get json response to manage with your own app. Instead maybe in a future we'll work on a class to be less transparent but more easy.
 
 
-Documentation
-=============
-
+**Documentation**
 The core of pytweena is ALPHA, so it can be changed completly.
 
 Pytweena wrap transparently the twitter REST API v1.1 using the same names.
@@ -19,16 +17,14 @@ Also you can send the same options documented on twitter api v1.1:
 - api.mentions_timeline({'count' : 10, 'since_id' : 12345, 'trim_user' : true})
 
 
-Roadmap
-=======
+**Roadmap**
 - Support for REST API v1.1
 - Support for Streaming APIs
 - Study if we can wrap json 
   responses into python object
   for easy manage this.
 
-Status
-======
+**Status**
  * REST API v1.1:
 - Timelines support: OK
 - Tweets support: OK except media upload
