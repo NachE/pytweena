@@ -34,7 +34,7 @@ Also you can send the same options documented on twitter api v1.1:
 - Streaming support: TODO
 - Direct Messages support: OK
 - Friends & Followers support: OK
-- Users support: TODO
+- Users support: OK
 - Suggested Users support: TODO
 - Favorites support: TODO
 - Lists support: TODO

@@ -162,3 +162,67 @@ class PytweenaAPI():
 	def followers_list(self, parameters = {}):
 		return self.req_GET('followers/list', parameters)
 
+
+	# Users
+	# =====
+
+	def account_settings(self, parameters = {}):
+		return self.req_GET('account/settings', parameters)
+
+	def account_verify_credentials(self, parameters = {}):
+		return self.req_GET('account/verify_credentials', parameters)
+
+	def account_settings(self, parameters = {}):
+		return self.req_POST('account/settings', parameters)
+
+	def account_update_delivery_device(self, parameters = {}):
+		return self.req_POST('account/update_delivery_device', parameters)
+
+	def account_update_profile(self, parameters = {}):
+		return self.req_POST('account/update_profile', parameters)
+
+	def account_update_profile_background_image(self, parameters = {}):
+		return self.req_POST('account/update_profile_background_image', parameters)
+
+	def account_update_profile_colors(self, parameters = {}):
+		return self.req_POST('account/update_profile_colors', parameters)
+
+	def account_update_profile_image(self, parameters = {}):
+		return self.req_POST('account/update_profile_image', parameters)
+
+	def blocks_list(self, parameters = {}):
+		return self.req_GET('blocks/list', parameters)
+
+	def blocks_ids(self, parameters = {}):
+		return self.req_GET('blocks/ids', parameters)
+
+	def blocks_create(self, parameters = {}):
+		return self.req_POST('blocks/create', parameters)
+
+	def blocks_destroy(self, parameters = {}):
+		return self.req_POST('blocks/destroy', parameters)
+
+	def users_lookup(self, parameters = {}):
+		return self.req_GET('users/lookup', parameters)
+
+	def users_show(self, parameters = {}):
+		return self.req_GET('users/show', parameters)
+
+	def users_search(self, parameters = {}):
+		return self.req_GET('users/search', parameters)
+
+	def users_contributees(self, parameters = {}):
+		return self.req_GET('users/contributees', parameters)
+
+	def users_contributors(self, parameters = {}):
+		return self.req_GET('users/contributors', parameters)
+
+	def account_remove_profile_banner(self, parameters = {}):
+		return self.req_POST('account/remove_profile_banner', parameters)
+
+	def account_update_profile_banner(self, parameters = {}):
+		return self.req_POST('account/update_profile_banner', parameters)
+
+	def users_profile_banner(self, parameters = {}):
+		return self.req_GET('users/profile_banner', parameters)
+
