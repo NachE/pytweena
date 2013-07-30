@@ -7,7 +7,7 @@ from pytweena.auth import PytweenaAuth
 
 class PytweenaAPI():
 
-	apibaseurl="http://api.twitter.com/1.1/"
+	apibaseurl="https://api.twitter.com/1.1/"
 	response = ""
 	data = ""
 	jsondata = ""
@@ -15,16 +15,38 @@ class PytweenaAPI():
 	def auth(self, consumer_key, consumer_secret, access_token, access_token_secret):
 		self.client = PytweenaAuth.login(consumer_key, consumer_secret, access_token, access_token_secret)
 
+	def req_POST(self, resource, parameters = {}):
+		return self.req_resource(resource, "POST", parameters)
+
 	def req_GET(self, resource, parameters = {}):
+		return self.req_resource(resource, "GET", parameters)
+
+	def req_resource(self, resource, http_method, parameters = {}):
 		if len(parameters) > 0:
-			options = "?"+urllib.urlencode(parameters)
+			if http_method == "GET":
+				options = "?"+urllib.urlencode(parameters)
+				post_data = ""
+			elif http_method == "POST":
+				post_data = urllib.urlencode(parameters)
+				options = ""
 		else:
 			options = ""
-		self.response, self.data = self.client.request(self.apibaseurl+resource+".json"+options)
+			post_data = ""
+
+		self.response, self.data = self.client.request(
+			self.apibaseurl+resource+".json"+options, 
+			method=http_method,
+			body = post_data 
+		)
+		print parameters;
+		print post_data;
+
 		self.jsondata = json.loads(self.data)
 		return [self.response, self.data]
 
-	#Timelines
+
+	# Timelines
+	# =========
 
 	def mentions_timeline(self, parameters = {}):
 		return self.req_GET('statuses/mentions_timeline', parameters)
@@ -37,4 +59,38 @@ class PytweenaAPI():
 
 	def retweets_of_me(self, parameters = {}):
 		return self.req_GET('statuses/retweets_of_me', parameters)
-		
+
+
+	# Tweets
+	# ======
+
+	def retweets(self, id, parameters = {}):
+		return self.req_GET('statuses/retweets/'+id, parameters)
+
+	def show(self, id, parameters = {}):
+		return self.req_GET('statuses/show/'+id, parameters)
+
+	def destroy(self, id, parameters = {}):
+		return self.req_POST('statuses/destroy/'+id, parameters)
+
+	def update(self, parameters = {}):
+		return self.req_POST('statuses/update', parameters)
+
+	def retweet(self, id, parameters = {}):
+		return self.req_POST('statuses/retweet/'+id, parameters)
+
+	#TODO: see later, media[] need raw image bytes
+	def update_with_media(self, parameters = {}):
+		return self.req_POST('statuses/update_with_media', parameters)
+
+	def oembed(self, parameters = {}):
+		return self.req_GET('statuses/oembed', parameters)
+
+	def retweeters_ids(self, parameters = {}):
+		return self.req_GET('statuses/retweeters/ids', parameters)
+
+
+
+
+
+
