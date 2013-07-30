@@ -46,49 +46,49 @@ class PytweenaAPI():
 	# Timelines
 	# =========
 
-	def mentions_timeline(self, parameters = {}):
+	def statuses_mentions_timeline(self, parameters = {}):
 		return self.req_GET('statuses/mentions_timeline', parameters)
 
-	def user_timeline(self, parameters = {}):
+	def statuses_user_timeline(self, parameters = {}):
 		return self.req_GET('statuses/user_timeline', parameters)
 
-	def home_timeline(self, parameters = {}):
+	def statuses_home_timeline(self, parameters = {}):
 		return self.req_GET('statuses/home_timeline', parameters)
 
-	def retweets_of_me(self, parameters = {}):
+	def statuses_retweets_of_me(self, parameters = {}):
 		return self.req_GET('statuses/retweets_of_me', parameters)
 
 
 	# Tweets
 	# ======
 
-	def retweets(self, parameters = {}):
+	def statuses_retweets(self, parameters = {}):
 		id = str(parameters.pop('id'))
 		return self.req_GET('statuses/retweets/'+id, parameters)
 
-	def show(self, parameters = {}):
+	def statuses_show(self, parameters = {}):
 		id = str(parameters.pop('id'))
 		return self.req_GET('statuses/show/'+id, parameters)
 
-	def destroy(self, parameters = {}):
+	def statuses_destroy(self, parameters = {}):
 		id = str(parameters.pop('id'))
 		return self.req_POST('statuses/destroy/'+id, parameters)
 
-	def update(self, parameters = {}):
+	def statuses_update(self, parameters = {}):
 		return self.req_POST('statuses/update', parameters)
 
-	def retweet(self, parameters = {}):
+	def statuses_retweet(self, parameters = {}):
 		id = str(parameters.pop('id'))
 		return self.req_POST('statuses/retweet/'+id, parameters)
 
 	#TODO: see later, media[] need raw image bytes
-	def update_with_media(self, parameters = {}):
+	def statuses_update_with_media(self, parameters = {}):
 		return self.req_POST('statuses/update_with_media', parameters)
 
-	def oembed(self, parameters = {}):
+	def statuses_oembed(self, parameters = {}):
 		return self.req_GET('statuses/oembed', parameters)
 
-	def retweeters_ids(self, parameters = {}):
+	def statuses_retweeters_ids(self, parameters = {}):
 		return self.req_GET('statuses/retweeters/ids', parameters)
 
 
@@ -126,6 +126,39 @@ class PytweenaAPI():
 	# Friends & Followers
 	# ===================
 
+	def friendships_no_retweets_ids(self, parameters = {}):
+		return self.req_GET('friendships/no_retweets/ids', parameters)
 
+	def friends_ids(self, parameters = {}):
+		return self.req_GET('friends/ids', parameters)
 
+	def followers_ids(self, parameters = {}):
+		return self.req_GET('followers/ids', parameters)
+
+	def friendships_lookup(self, parameters = {}):
+		return self.req_GET('friendships/lookup', parameters)
+
+	def friendships_incoming(self, parameters = {}):
+		return self.req_GET('friendships/incoming', parameters)
+
+	def friendships_outgoing(self, parameters = {}):
+		return self.req_GET('friendships/outgoing', parameters)
+
+	def friendships_create(self, parameters = {}):
+		return self.req_POST('friendships/create', parameters)
+
+	def friendships_destroy(self, parameters = {}):
+		return self.req_POST('friendships/destroy', parameters)
+
+	def friendships_update(self, parameters = {}):
+		return self.req_POST('friendships/update', parameters)
+
+	def friendships_show(self, parameters = {}):
+		return self.req_GET('friendships/show', parameters)
+
+	def friends_list(self, parameters = {}):
+		return self.req_GET('friends/list', parameters)
+
+	def followers_list(self, parameters = {}):
+		return self.req_GET('followers/list', parameters)
 

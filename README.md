@@ -11,11 +11,11 @@ Pytweena try to be very transparent: you send query and get json response to man
 The core of pytweena is ALPHA, so it can be changed completly.
 
 Pytweena wrap transparently the twitter REST API v1.1 using the same names.
-- GET statuses/mentions_timeline  ->  api.mentions_timeline()
-- GET statuses/user_timeline  ->  api.user_timeline()
+- GET statuses/mentions_timeline  ->  api.statuses_mentions_timeline()
+- GET statuses/user_timeline  ->  api.statuses_user_timeline()
 
 Also you can send the same options documented on twitter api v1.1:
-- api.mentions_timeline({'count' : 10, 'since_id' : 12345, 'trim_user' : 'true'})
+- api.statuses_mentions_timeline({'count' : 10, 'since_id' : 12345, 'trim_user' : 'true'})
 
 
 **Roadmap**
@@ -33,7 +33,7 @@ Also you can send the same options documented on twitter api v1.1:
 - Search support: OK
 - Streaming support: TODO
 - Direct Messages support: OK
-- Friends & Followers support: TODO
+- Friends & Followers support: OK
 - Users support: TODO
 - Suggested Users support: TODO
 - Favorites support: TODO
