@@ -7,6 +7,7 @@ Pytweena try to be very transparent: you send query and get json response to man
 
 
 **Documentation**
+
 The core of pytweena is ALPHA, so it can be changed completly.
 
 Pytweena wrap transparently the twitter REST API v1.1 using the same names.
