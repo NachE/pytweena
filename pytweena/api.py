@@ -62,19 +62,23 @@ class PytweenaAPI():
 	# Tweets
 	# ======
 
-	def retweets(self, id, parameters = {}):
+	def retweets(self, parameters = {}):
+		id = str(parameters.pop('id'))
 		return self.req_GET('statuses/retweets/'+id, parameters)
 
-	def show(self, id, parameters = {}):
+	def show(self, parameters = {}):
+		id = str(parameters.pop('id'))
 		return self.req_GET('statuses/show/'+id, parameters)
 
-	def destroy(self, id, parameters = {}):
+	def destroy(self, parameters = {}):
+		id = str(parameters.pop('id'))
 		return self.req_POST('statuses/destroy/'+id, parameters)
 
 	def update(self, parameters = {}):
 		return self.req_POST('statuses/update', parameters)
 
-	def retweet(self, id, parameters = {}):
+	def retweet(self, parameters = {}):
+		id = str(parameters.pop('id'))
 		return self.req_POST('statuses/retweet/'+id, parameters)
 
 	#TODO: see later, media[] need raw image bytes
