@@ -52,7 +52,7 @@ myapi.statuses_update({'status': 'Hi!, im an app with pytweena lib!'})
 ###########################################
 print("\n\n\nSend a tweet with an image")
 myapi.statuses_update_with_media(
-	{'status': 'Hi!, do you like this img? (4)', 
+	{'status': 'Hi!, do you like this img?', 
 	'media[]': 'copperhead-snake-head.jpg'
 	})
 ###########################################

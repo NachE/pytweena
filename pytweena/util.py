@@ -53,28 +53,3 @@ class PytweenaUtil:
 		#return results
 		return header, body
 
-
-
-
-
-		
-
-
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

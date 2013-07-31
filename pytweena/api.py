@@ -236,3 +236,19 @@ class PytweenaAPI():
 	def users_profile_banner(self, parameters = {}):
 		return self.req_GET('users/profile_banner', parameters)
 
+
+	# Suggested Users
+	# ===============
+
+	def users_suggestions_slug(self, parameters = {}):
+		slug = str(parameters.pop('slug'))	
+		return self.req_GET('users/suggestions/'+slug, parameters)
+
+	def users_suggestions(self, parameters = {}):
+		return self.req_GET('users/suggestions', parameters)
+
+	def users_suggestions_slug_members(self, parameters = {}):
+		slug = str(parameters.pop('slug'))
+		return self.req_GET('users/suggestions/'+slug+'/members', parameters)
+
+
