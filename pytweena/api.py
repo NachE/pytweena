@@ -48,7 +48,7 @@ class PytweenaAPI():
 		)
 
 		self.jsondata = json.loads(self.data)
-		return [self.response, self.data]
+		return self.response, self.data
 
 
 	# Timelines
