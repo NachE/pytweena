@@ -263,4 +263,47 @@ class PytweenaAPI():
 		return self.req_POST('favorites/create', parameters)
 
 
+	# Lists
+	# =====
+
+	def lists_list(self, parameters = {}):
+		return self.req_GET('lists/list', parameters)
+	def lists_statuses(self, parameters = {}):
+		return self.req_GET('lists/statuses', parameters)
+	def lists_members_destroy(self, parameters = {}):
+		return self.req_POST('lists/members/destroy', parameters)
+	def lists_memberships(self, parameters = {}):
+		return self.req_GET('lists/memberships', parameters)
+	def lists_subscribers(self, parameters = {}):
+		return self.req_GET('lists/subscribers', parameters)
+	def lists_subscribers_create(self, parameters = {}):
+		return self.req_POST('lists/subscribers', parameters)
+	def lists_subscribers_show(self, parameters = {}):
+		return self.req_GET('lists/subscribers/show', parameters)
+	def lists_subscribers_destroy(self, parameters = {}):
+		return self.req_POST('lists/subscribers/destroy', parameters)
+	def lists_members_create_all(self, parameters = {}):
+		return self.req_POST('lists/members/create_all', parameters)
+	def lists_members_show(self, parameters = {}):
+		return self.req_GET('lists/members/show', parameters)
+	def lists_members(self, parameters = {}):
+		return self.req_GET('lists/members', parameters)
+	def lists_members_create(self, parameters = {}):
+		return self.req_POST('lists/members/create', parameters)
+	def lists_destroy(self, parameters = {}):
+		return self.req_POST('lists/destroy', parameters)
+	def lists_update(self, parameters = {}):
+		return self.req_POST('lists/update', parameters)
+	def lists_create(self, parameters = {}):
+		return self.req_POST('lists/create', parameters)
+	def lists_show(self, parameters = {}):
+		return self.req_GET('lists/show', parameters)
+	def lists_subscriptions(self, parameters = {}):
+		return self.req_GET('lists/subscriptions', parameters)
+	def lists_members_destroy_all(self, parameters = {}):
+		return self.req_POST('lists/members/destroy_all', parameters)
+	def lists_ownerships(self, parameters = {}):
+		return self.req_GET('lists/ownerships', parameters)
+
+
 
