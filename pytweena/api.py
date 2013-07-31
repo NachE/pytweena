@@ -4,6 +4,7 @@
 
 import json, urllib
 from pytweena.auth import PytweenaAuth
+from pytweena.util import PytweenaUtil
 
 class PytweenaAPI():
 
@@ -14,29 +15,36 @@ class PytweenaAPI():
 
 	def auth(self, consumer_key, consumer_secret, access_token, access_token_secret):
 		self.client = PytweenaAuth.login(consumer_key, consumer_secret, access_token, access_token_secret)
-
+	
 	def req_POST(self, resource, parameters = {}):
 		return self.req_resource(resource, "POST", parameters)
 
 	def req_GET(self, resource, parameters = {}):
 		return self.req_resource(resource, "GET", parameters)
 
-	def req_resource(self, resource, http_method, parameters = {}):
-		if len(parameters) > 0:
-			if http_method == "GET":
-				options = "?"+urllib.urlencode(parameters)
-				post_data = ""
-			elif http_method == "POST":
-				post_data = urllib.urlencode(parameters)
-				options = ""
-		else:
+	def req_resource(self, resource, http_method, parameters = {}, body = '', headers = None):
+		#TODO: Take a break to improve these if else
+
+		if len(body) > 0:
+			post_data = body
 			options = ""
-			post_data = ""
+		else:
+			if len(parameters) > 0:
+				if http_method == "GET":
+					options = "?"+urllib.urlencode(parameters)
+					post_data = ""
+				elif http_method == "POST":
+					post_data = urllib.urlencode(parameters)
+					options = ""
+			else:
+				options = ""
+				post_data = ""
 
 		self.response, self.data = self.client.request(
 			self.apibaseurl+resource+".json"+options, 
 			method=http_method,
-			body = post_data 
+			body = post_data,
+			headers = headers
 		)
 
 		self.jsondata = json.loads(self.data)
@@ -83,7 +91,9 @@ class PytweenaAPI():
 
 	#TODO: see later, media[] need raw image bytes
 	def statuses_update_with_media(self, parameters = {}):
-		return self.req_POST('statuses/update_with_media', parameters)
+		img_path = parameters.pop('media[]')
+		hdr, bdy = PytweenaUtil.mkMultipartImageHeaders(img_path, parameters)
+		return self.req_resource('statuses/update_with_media','POST',{},bdy,hdr)
 
 	def statuses_oembed(self, parameters = {}):
 		return self.req_GET('statuses/oembed', parameters)

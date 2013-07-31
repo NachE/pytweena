@@ -12,6 +12,7 @@ __license__ = 'GPLv3'
 
 from pytweena.auth import PytweenaAuth as auth
 from pytweena.api import PytweenaAPI
+from pytweena.util import PytweenaUtil
 
 api = PytweenaAPI()
 

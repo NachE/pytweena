@@ -29,7 +29,7 @@ Also you can send the same options documented on twitter api v1.1:
 **Status**
  * REST API v1.1:
 - Timelines support: OK
-- Tweets support: OK except media upload
+- Tweets support: OK 
 - Search support: OK
 - Streaming support: TODO
 - Direct Messages support: OK
