@@ -252,3 +252,15 @@ class PytweenaAPI():
 		return self.req_GET('users/suggestions/'+slug+'/members', parameters)
 
 
+	# Favorites
+	# =========
+
+	def favorites_list(self, parameters = {}):
+		return self.req_GET('favorites/list', parameters)
+	def favorites_destroy(self, parameters = {}):
+		return self.req_POST('favorites/destroy', parameters)
+	def favorites_create(self, parameters = {}): 
+		return self.req_POST('favorites/create', parameters)
+
+
+
