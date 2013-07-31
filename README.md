@@ -21,12 +21,10 @@ Also you can send the same options documented on twitter api v1.1:
 
 
 **Roadmap**
-- Support for REST API v1.1
+- Support for REST API v1.1.
+- Wrap API responses into objects
 - Support for Streaming APIs
 - Add error control, pytweena never should crash
-- Study if we can wrap json 
-  responses into python object
-  for easy manage this.
 
 **Status**
  * REST API v1.1:

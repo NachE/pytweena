@@ -1,4 +1,4 @@
-# Tweepy
+# Pytweena
 # Copyright 2013 J.A. Nache
 # See LICENSE for details.
 
