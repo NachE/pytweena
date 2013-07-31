@@ -314,11 +314,34 @@ class PytweenaAPI():
 
 	def saved_searches_list(self, parameters = {}):
 		 return self.req_GET('saved_searches/list', parameters)
-	def saved_searches_show_id(self, parameters = {}):
+	def saved_searches_show(self, parameters = {}):
 		id = str(parameters.pop('id'))
 		return self.req_GET('saved_searches/show/'+id, parameters)
 	def saved_searches_create(self, parameters = {}):
 		return self.req_POST('saved_searches/create', parameters)
-	def saved_searches_destroy_id(self, parameters = {}):
+	def saved_searches_destroy(self, parameters = {}):
 		id = str(parameters.pop('id'))
 		return self.req_POST('saved_searches/destroy/'+id, parameters)
+
+
+	# Places & Geo
+	# ============
+
+	def geo_id(self, parameters = {}):
+		place_id = str(parameters.pop('place_id'))
+		return self.req_GET('geo/id/'+place_id, parameters)
+	def geo_reverse_geocode(self, parameters = {}):
+		return self.req_GET('geo/reverse_geocode', parameters)
+	def geo_search(self, parameters = {}):
+		return self.req_GET('geo/search', parameters)
+	def geo_similar_places(self, parameters = {}):
+		return self.req_GET('geo/similar_places', parameters)
+	def geo_place(self, parameters = {}):
+		return self.req_POST('geo/place', parameters)
+
+
+
+
+
+
+

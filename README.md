@@ -39,7 +39,7 @@ Also you can send the same options documented on twitter api v1.1:
 - Favorites support: OK
 - Lists support: OK
 - Saved searches support: OK
-- Places & Geo support: TODO
+- Places & Geo support: OK
 - Trends support: TODO
 - Spam Reporting support: TODO
 - OAuth support: OK with python-oauth2 lib
