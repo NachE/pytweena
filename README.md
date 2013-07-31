@@ -42,7 +42,7 @@ Also you can send the same options documented on twitter api v1.1:
 - Lists support: OK
 - Saved searches support: OK
 - Places & Geo support: OK
-- Trends support: TODO
+- Trends support: OK
 - Spam Reporting support: TODO
 - OAuth support: OK with python-oauth2 lib
 - Help support: TODO 

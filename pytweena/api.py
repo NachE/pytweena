@@ -340,6 +340,15 @@ class PytweenaAPI():
 		return self.req_POST('geo/place', parameters)
 
 
+	# Trends
+	# ======
+
+	def trends_place(self, parameters = {}):
+		return self.req_GET('trends/place', parameters)
+	def trends_available(self, parameters = {}):
+		return self.req_GET('trends/available', parameters)
+	def trends_closest(self, parameters = {}):
+		return self.req_GET('trends/closest', parameters)
 
 
 
