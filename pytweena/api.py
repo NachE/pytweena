@@ -245,7 +245,10 @@ class PytweenaAPI():
 		return self.req_GET('users/suggestions/'+slug, parameters)
 
 	def users_suggestions(self, parameters = {}):
-		return self.req_GET('users/suggestions', parameters)
+		if 'slug' in parameters:
+			return self.users_suggestions_slug(parameters)
+		else:
+			return self.req_GET('users/suggestions', parameters)
 
 	def users_suggestions_slug_members(self, parameters = {}):
 		slug = str(parameters.pop('slug'))
@@ -306,4 +309,16 @@ class PytweenaAPI():
 		return self.req_GET('lists/ownerships', parameters)
 
 
+	# Saved Searches
+	# ==============
 
+	def saved_searches_list(self, parameters = {}):
+		 return self.req_GET('saved_searches/list', parameters)
+	def saved_searches_show_id(self, parameters = {}):
+		id = str(parameters.pop('id'))
+		return self.req_GET('saved_searches/show/'+id, parameters)
+	def saved_searches_create(self, parameters = {}):
+		return self.req_POST('saved_searches/create', parameters)
+	def saved_searches_destroy_id(self, parameters = {}):
+		id = str(parameters.pop('id'))
+		return self.req_POST('saved_searches/destroy/'+id, parameters)

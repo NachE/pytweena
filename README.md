@@ -38,7 +38,7 @@ Also you can send the same options documented on twitter api v1.1:
 - Suggested Users support: OK
 - Favorites support: OK
 - Lists support: OK
-- Saved searches support: TODO
+- Saved searches support: OK
 - Places & Geo support: TODO
 - Trends support: TODO
 - Spam Reporting support: TODO
