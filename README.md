@@ -43,6 +43,6 @@ Also you can send the same options documented on twitter api v1.1:
 - Saved searches support: OK
 - Places & Geo support: OK
 - Trends support: OK
-- Spam Reporting support: TODO
+- Spam Reporting support: OK
 - OAuth support: OK with python-oauth2 lib
-- Help support: TODO 
+- Help support: OK

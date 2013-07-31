@@ -351,6 +351,33 @@ class PytweenaAPI():
 		return self.req_GET('trends/closest', parameters)
 
 
+	# Spam Reporting
+	# ==============
+
+	def users_report_spam(self, parameters = {}):
+		return self.req_POST('users/report_spam', parameters)
+
+
+	# OAuth
+	# =====
+	# TODO or not TODO
+
+
+	# Help
+	# ====
+
+	def help_configuration(self, parameters = {}):
+		return self.req_GET('help/configuration', parameters)
+	def help_languages(self, parameters = {}):
+		return self.req_GET('help/languages', parameters)
+	def help_privacy(self, parameters = {}):
+		return self.req_GET('help/privacy', parameters)
+	def help_tos(self, parameters = {}):
+		return self.req_GET('help/tos', parameters)
+	def application_rate_limit_status(self, parameters = {}):
+		return self.req_GET('application/rate_limit_status', parameters)
+
+
 
 
 
