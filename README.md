@@ -16,6 +16,8 @@ Pytweena wrap transparently the twitter REST API v1.1 using the same names.
 
 Also you can send the same options documented on twitter api v1.1:
 - api.statuses_mentions_timeline({'count' : 10, 'since_id' : 12345, 'trim_user' : 'true'})
+- api.statuses_update({'status' : 'Hey, this is a tweet!'})
+- api.statuses_update_with_media({'status': 'Hi!, do you like this img? (4)', 'media[]': 'copperhead-snake-head.jpg'})
 
 
 **Roadmap**
