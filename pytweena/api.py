@@ -8,7 +8,7 @@ from pytweena.util import PytweenaUtil
 
 class PytweenaAPI():
 
-	apibaseurl="https://api.twitter.com/1.1/"
+	apibaseurl = "https://api.twitter.com/1.1/"
 	response = ""
 	data = ""
 	jsondata = ""
@@ -386,7 +386,7 @@ class PytweenaAPI():
 #		elif resource == 'statuses/retweets_of_me':
 #		elif resource == 'statuses/retweets/:id':
 #		elif resource == 'statuses/show/:id':
-#		elif resource == 'statuses/destroy/:i':d
+#		elif resource == 'statuses/destroy/:id':
 #		elif resource == 'statuses/update':
 #		elif resource == 'statuses/retweet/:id':
 #		elif resource == 'statuses/update_with_media':
