@@ -10,9 +10,11 @@ __author__ = 'J.A. Nache'
 __license__ = 'GPLv3'
 
 
-from pytweena.auth import PytweenaAuth as auth
+
+
+from pytweena.auth import PytweenaAuth
 from pytweena.api import PytweenaAPI
 from pytweena.util import PytweenaUtil
 
-api = PytweenaAPI()
+#api = PytweenaAPI()
 
