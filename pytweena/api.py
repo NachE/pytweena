@@ -40,15 +40,19 @@ class PytweenaAPI():
 				options = ""
 				post_data = ""
 
-		self.response, self.data = self.client.request(
+		response, data = self.client.request(
 			self.apibaseurl+resource+".json"+options, 
 			method=http_method,
 			body = post_data,
 			headers = headers
 		)
 
-		self.jsondata = json.loads(self.data)
-		return self.response, self.data
+		#Prevent overwride
+		self.response = response
+		self.data = data
+		jsondata = json.loads(data)
+		self.jsondata = jsondata
+		return response, data
 
 
 	# Timelines
