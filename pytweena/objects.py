@@ -28,11 +28,51 @@ class PytweenaObject:
 		self.jsondata = jsondata
 		self.build_object()
 
-	def build_object():
+	def build_object(self):
 		pass
 		# This method is defined 
 		# on each specific object
 		# (UsersObject, TweetObject, etc)
+
+
+# https://dev.twitter.com/docs/platform-objects/entities
+class EntitiesObject(PytweenaObject):
+
+	hashtags = {} # Here is an array of objects
+	media = {}    # Look if need clases for
+	urls = {}     # these Objects
+	user_mentions = {}
+
+	def build_object():
+		self.hashtags = self.jsondata['hashtags']
+		self.media = self.jsondata['media']
+		self.urls = self.jsondata['urls']
+		self.user_mentions = self.jsondata['user_mentions']
+
+
+# https://dev.twitter.com/docs/platform-objects/places
+class PlacesObject(PytweenaObject):
+	attributes = {}
+	bounding_box = {} #have coordinates[] and type str()
+	country = str()
+	country_code = str()
+	full_name = str()
+	id = str()
+	name = str()
+	place_type = str()
+	url = str()
+
+	def build_object(self):
+		self.attributes = self.jsondata['attributes']
+		self.bounding_box = self.jsondata['bounding_box']
+		self.country = str(self.jsondata['country'])
+		self.country_code = str(self.jsondata['country_code'])
+		self.full_name = str(self.jsondata['full_name'])
+		self.id = str(self.jsondata['id'])
+		self.name = str(self.jsondata['name'])
+		self.place_type = str(self.jsondata['place_type'])
+		self.url = str(self.jsondata['url'])
+
 
 # https://dev.twitter.com/docs/platform-objects/users
 class UsersObject(PytweenaObject):
@@ -42,7 +82,7 @@ class UsersObject(PytweenaObject):
 	default_profile = bool()
 	default_profile_image = bool()
 	description = str()
-	entities = EntitiesObject()
+	entities = None
 	favourites_count = int()
 	follow_request_sent = bool() # Doc say "Type"
 	following = bool() # Doc say "Type" again
@@ -56,7 +96,7 @@ class UsersObject(PytweenaObject):
 	listed_count = int()
 	location = str()
 	name = str()
-	notifications = boolean()
+	notifications = bool()
 	profile_background_color = str()
 	profile_background_image_url = str()
 	profile_background_image_url_https = str()
@@ -72,7 +112,7 @@ class UsersObject(PytweenaObject):
 	protected = bool()
 	screen_name = str()
 	show_all_inline_media = bool()
-	status = TweetsObject()
+	status = None 
 	statuses_count = int()
 	time_zone = str()
 	url = str()
@@ -81,13 +121,13 @@ class UsersObject(PytweenaObject):
 	withheld_in_countries = str()
 	withheld_scope = str()
 	
-	def build_object():
+	def build_object(self):
 		self.contributors_enabled = bool(self.jsondata['contributors_enabled'])
 		self.created_at = str(self.jsondata['created_at'])
 		self.default_profile = bool(self.jsondata['default_profile'])
 		self.default_profile_image = bool(self.jsondata['default_profile_image'])
 		self.description = str(self.jsondata['description'])
-		self.entities.load(self.jsondata['entities'])
+		self.entities = EntitiesObject(self.jsondata['entities'])
 		self.favourites_count = int(self.jsondata['favourites_count'])
 		self.follow_request_sent = bool(self.jsondata['request_sent']) # Doc say "Type"
 		self.following = bool(self.jsondata['following']) # Doc say "Type" again
@@ -117,7 +157,7 @@ class UsersObject(PytweenaObject):
 		self.protected = bool(self.jsondata['protected'])
 		self.screen_name = str(self.jsondata['screen_name'])
 		self.show_all_inline_media = bool(self.jsondata['show_all_inline_media'])
-		self.status.load(self.jsondata['status'])
+		self.status = TweetsObject(self.jsondata['status'])
 		self.statuses_count = int(self.jsondata['statuses_count'])
 		self.time_zone = str(self.jsondata['time_zone'])
 		self.url = str(self.jsondata['url'])
@@ -141,7 +181,7 @@ class TweetsObject(PytweenaObject):
  
 	created_at = str()
 	current_user_retweet = {}
-	entities = EntitiesObject()
+	entities = None 
 	favorite_count = int()
 	favorited = bool()
 	filter_level = str()
@@ -162,17 +202,18 @@ class TweetsObject(PytweenaObject):
 	source = str()
 	text = str()
 	truncated = bool()
-	user = UsersObject()
+	user = None
 	withheld_copyright = bool()
 	withheld_in_countries = []
 	withheld_scope = str()
 
-	def build_object():
+	def build_object(self):
 		self.contributors = self.jsondata['contributors'] #TODO: Convert into Object?
 		self.coordinates = self.jsondata['coordinates'] # TODO: Object?
+		print self.jsondata['created_at']
 		self.created_at = str(self.jsondata['created_at'])
-		self.current_user_retweet = self.jsondata['current_user_retweet']
-		self.entities.load(self.jsondata['entities'])
+		self.current_user_retweet = self.jsondata['current_user_retweet'] or None
+		self.entities = EntitiesObject(self.jsondata['entities'])
 		self.favorite_count = int(self.jsondata['favorite_count'])
 		self.favorited = bool(self.jsondata['favorited']) or None #Bug? keep waching
 		self.filter_level = str(self.jsondata['filter_level'])
@@ -193,45 +234,7 @@ class TweetsObject(PytweenaObject):
 		self.source = str(self.jsondata['source'])
 		self.text = str(self.jsondata['text'])
 		self.truncated = bool(self.jsondata['truncated'])
-		self.user.load(self.jsondata['user'])
+		self.user = UsersObject(self.jsondata['user'])
 		self.withheld_copyright = bool(self.jsondata['withheld_copyright'])
 		self.withheld_in_countries = self.jsondata['withheld_in_countries']
 		self.withheld_scope = str(self.jsondata['withheld_scope'])
-
-# https://dev.twitter.com/docs/platform-objects/entities
-class EntitiesObject(PytweenaObject):
-
-	hashtags = {} # Here is an array of objects
-	media = {}    # Look if need clases for
-	urls = {}     # these Objects
-	user_mentions = {}
-
-	def build_object():
-		self.hashtags = self.jsondata['hashtags']
-		self.media = self.jsondata['media']
-		self.urls = self.jsondata['urls']
-		self.user_mentions = self.jsondata['user_mentions']
-
-
-# https://dev.twitter.com/docs/platform-objects/places
-class PlacesObject(PytweenaObject):
-	attributes = {}
-	bounding_box = {} #have coordinates[] and type str()
-	country = str()
-	country_code = str()
-	full_name = str()
-	id = str()
-	name = str()
-	place_type = str()
-	url = str()
-
-	def build_object():
-		self.attributes = self.jsondata['attributes']
-		self.bounding_box = self.jsondata['bounding_box']
-		self.country = str(self.jsondata['country'])
-		self.country_code = str(self.jsondata['country_code'])
-		self.full_name = str(self.jsondata['full_name'])
-		self.id = str(self.jsondata['id'])
-		self.name = str(self.jsondata['name'])
-		self.place_type = str(self.jsondata['place_type'])
-		self.url = str(self.jsondata['url'])

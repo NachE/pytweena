@@ -13,6 +13,7 @@ __license__ = 'GPLv3'
 
 from pytweena.api import PytweenaAPI
 from pytweena.easy import PytweenaEasy
+from pytweena.objects import *
 #import pytweena.util
 #import pytweena.pytweenaobject
 #import pytweena.entitiesobject
