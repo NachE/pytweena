@@ -190,8 +190,8 @@ class TweetsObject(PytweenaObject):
 
 	def next(self):
 		try:
-			ret = self.tweetsObjects[self.i]
 			self.i += 1
+			ret = self.tweetsObjects[self.i]
 		except IndexError:
 			raise StopIteration
 		return ret
@@ -202,6 +202,9 @@ class TweetsObject(PytweenaObject):
 			raise StopIteration
 		return self.tweetsObjects[self.i]
 
+	def current(self):
+		return self.tweetsObjects[self.i]
+
 	def iterate(self):
 		for self.i, element in enumerate(self.tweetsObjects):
 			yield element
@@ -209,6 +212,9 @@ class TweetsObject(PytweenaObject):
 	def rev_iterate(self):
 		for self.i, element in enumerate(reversed(self.tweetsObjects)):
 			yield element
+
+	def resetcursor(self):
+		self.i = -1
 
 	def __iter__(self):
 		return self
