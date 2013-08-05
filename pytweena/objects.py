@@ -140,17 +140,17 @@ class UsersObject(PytweenaObject):
 		self.default_profile_image = boolN(self.jsondata.get('default_profile_image'))
 		self.description = strN(self.jsondata.get('description'))
 		self.entities = EntitiesObject(self.jsondata.get('entities'))
-		self.favourites_count = int(self.jsondata.get('favourites_count'))
+		self.favourites_count = intN(self.jsondata.get('favourites_count'))
 		self.follow_request_sent = boolN(self.jsondata.get('request_sent')) # Doc say "Type"
 		self.following = boolN(self.jsondata.get('following')) # Doc say "Type" again
-		self.followers_count = int(self.jsondata.get('followers_count'))
-		self.friends_count = int(self.jsondata.get('friends_count'))
+		self.followers_count = intN(self.jsondata.get('followers_count'))
+		self.friends_count = intN(self.jsondata.get('friends_count'))
 		self.geo_enabled = boolN(self.jsondata.get('geo_enabled'))
 		self.id = long(self.jsondata.get('id'))
 		self.id_str = strN(self.jsondata.get('id_str'))
 		self.is_translator = boolN(self.jsondata.get('is_translator'))
 		self.lang = strN(self.jsondata.get('lang'))
-		self.listed_count = int(self.jsondata.get('listed_count'))
+		self.listed_count = intN(self.jsondata.get('listed_count'))
 		self.location = strN(self.jsondata.get('location'))
 		self.name = strN(self.jsondata.get('name'))
 		self.notifications = boolN(self.jsondata.get('notifications'))
@@ -170,18 +170,53 @@ class UsersObject(PytweenaObject):
 		self.screen_name = strN(self.jsondata.get('screen_name'))
 		self.show_all_inline_media = boolN(self.jsondata.get('show_all_inline_media'))
 		self.status = TweetsObject(self.jsondata.get('status'))
-		self.statuses_count = int(self.jsondata.get('statuses_count'))
+		self.statuses_count = intN(self.jsondata.get('statuses_count'))
 		self.time_zone = strN(self.jsondata.get('time_zone'))
 		self.url = strN(self.jsondata.get('url'))
-		self.utc_offset = int(self.jsondata.get('utc_offset'))
+		self.utc_offset = intN(self.jsondata.get('utc_offset'))
 		self.verified = boolN(self.jsondata.get('verified'))
 		self.withheld_in_countries = strN(self.jsondata.get('withheld_in_countries'))
 		self.withheld_scope = strN(self.jsondata.get('withheld_scope'))
 
 
+class TweetsObject(PytweenaObject):
+
+	tweetsObjects = []
+	i = -1
+
+	def build_object(self):
+		for tweet in self.jsondata:
+			self.tweetsObjects.append(TweetObject(tweet))
+
+	def next(self):
+		try:
+			ret = self.tweetsObjects[self.i]
+			self.i += 1
+		except IndexError:
+			raise StopIteration
+		return ret
+
+	def prev(self):
+		self.i -= 1
+		if self.i < 0:
+			raise StopIteration
+		return self.tweetsObjects[self.i]
+
+	def iterate(self):
+		for self.i, element in enumerate(self.tweetsObjects):
+			yield element
+
+	def rev_iterate(self):
+		for self.i, element in enumerate(reversed(self.tweetsObjects)):
+			yield element
+
+	def __iter__(self):
+		return self
 
 # https://dev.twitter.com/docs/platform-objects/tweets
-class TweetsObject(PytweenaObject):
+# TweetsObject can be a list of objects or a single object
+# So good...
+class TweetObject(PytweenaObject):
 
 	#TODO: Object?
 	#https://dev.twitter.com/docs/platform-objects/tweets#obj-contributors
@@ -225,7 +260,7 @@ class TweetsObject(PytweenaObject):
 		self.created_at = strN(self.jsondata.get('created_at'))
 		self.current_user_retweet = self.jsondata.get('current_user_retweet')
 		self.entities = EntitiesObject(self.jsondata.get('entities'))
-		self.favorite_count = int(self.jsondata.get('favorite_count'))
+		self.favorite_count = intN(self.jsondata.get('favorite_count'))
 		self.favorited = boolN(self.jsondata.get('favorited')) or None #Bug? keep waching
 		self.filter_level = strN(self.jsondata.get('filter_level'))
 		self.geo = self.jsondata.get('geo') #DEPRECATED
@@ -240,7 +275,7 @@ class TweetsObject(PytweenaObject):
 		self.place = PlacesObject(self.jsondata.get('place')) #It can be Null, so be carefully
 		self.possibly_sensitive = boolN(self.jsondata.get('possibly_sensitive'))
 		self.scopes = self.jsondata.get('scopes') # Dict or None 
-		self.retweet_count = int(self.jsondata.get('retweet_count'))
+		self.retweet_count = intN(self.jsondata.get('retweet_count'))
 		self.retweeted = boolN(self.jsondata.get('retweeted'))
 		self.source = strN(self.jsondata.get('source'))
 		self.text = strN(self.jsondata.get('text'))
